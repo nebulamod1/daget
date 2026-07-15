@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dana Kaget Mission</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+      font-family: system-ui, sans-serif;
+      background: #f4f6f8;
+    }
+
+    .card {
+      width: 100%;
+      max-width: 420px;
+      background: white;
+      padding: 24px;
+      border-radius: 20px;
+      text-align: center;
+      box-shadow: 0 10px 25px rgba(0,0,0,.1);
+    }
+
+    h2 {
+      margin-top: 0;
+    }
+
+    .mission {
+      text-align: left;
+      background: #f8fafc;
+      padding: 16px;
+      border-radius: 12px;
+      margin: 20px 0;
+      line-height: 1.8;
+    }
+
+    button {
+      width: 100%;
+      padding: 14px;
+      border: none;
+      border-radius: 12px;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      margin-top: 12px;
+    }
+
+    #visitBtn {
+      background: #ff0000;
+      color: white;
+    }
+
+    #claimBtn {
+      background: #16a34a;
+      color: white;
+      display: none;
+    }
+
+    button:disabled {
+      opacity: .6;
+      cursor: not-allowed;
+    }
+
+    #status {
+      margin-top: 16px;
+      color: #555;
+      font-size: 14px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="card">
+
+    <h2>💸 Dana Kaget Mission</h2>
+
+    <p>
+      Sebelum claim Daget, boleh lah ya mampir ke channel YouTube aku dulu wkwk🤣
+    </p>
+
+    <div class="mission">
+      📺 <b>Misinya gampang:</b><br>
+      ✅ Kunjungi channel YouTube aku<br>
+      ✅ Kalau ada video menarik boleh ditonton<br>
+      ✅ Kalau suka kontennya boleh subscribe juga
+    </div>
+
+    <button id="visitBtn">
+      📺 Kunjungi channel
+    </button>
+
+    <button id="claimBtn">
+      💸 Aku Sudah Mampir 😆
+    </button>
+
+    <div id="status"></div>
+
+  </div>
+
+  <script>
+    const youtubeLink = "https://youtube.com/@nebula-d8k?si=sbJNszH-3IeLw9JN";
+    const danaLink = "https://link.dana.id/danakaget?c=stby8t4q4&r=djCjBb&orderId=20260715101214755515010300166753787353410";
+
+    const visitBtn = document.getElementById("visitBtn");
+    const claimBtn = document.getElementById("claimBtn");
+    const status = document.getElementById("status");
+
+    visitBtn.addEventListener("click", () => {
+      window.open(youtubeLink, "_blank");
+
+      visitBtn.disabled = true;
+
+      let countdown = 10;
+
+      status.innerHTML =
+        `⏳ Tunggu ${countdown} detik ya...`;
+
+      const timer = setInterval(() => {
+        countdown--;
+
+        status.innerHTML =
+          `⏳ Tunggu ${countdown} detik ya...`;
+
+        if (countdown <= 0) {
+          clearInterval(timer);
+
+          status.innerHTML =
+            "Terima kasih sudah mampir dan mendukung channel kecil ini berkembang!😆";
+
+          claimBtn.style.display = "block";
+        }
+      }, 1000);
+    });
+
+    claimBtn.addEventListener("click", () => {
+      window.location.href = danaLink;
+    });
+  </script>
+</body>
+</html>
